@@ -30,7 +30,7 @@ export function Column({ status, label, tasks }: ColumnProps) {
         </div>
         <button
           onClick={() => openTaskModal('create')}
-          className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+          className="p-1 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
           aria-label={`Add task to ${label}`}
         >
           <Plus className="w-5 h-5" />
