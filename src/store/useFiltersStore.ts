@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Filters, ViewMode, Tag, Priority } from '@/types';
+import type { Filters, ViewMode, Priority } from '@/types';
 
 interface FiltersState {
   filters: Filters;
@@ -8,7 +8,7 @@ interface FiltersState {
   setFilters: (filters: Partial<Filters>) => void;
   resetFilters: () => void;
   setViewMode: (mode: ViewMode) => void;
-  toggleTag: (tag: Tag) => void;
+  toggleTag: (tag: string) => void;
   togglePriority: (priority: Priority) => void;
   toggleAssignee: (userId: string) => void;
 }

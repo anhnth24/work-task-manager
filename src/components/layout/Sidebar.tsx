@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Kanban } from 'lucide-react';
+import { LayoutDashboard, Kanban, Settings } from 'lucide-react';
 import { cn } from '@/utils/misc';
 import { StickyNotes } from '@/components/notes/StickyNotes';
 
@@ -9,6 +9,7 @@ export function Sidebar() {
   const links = [
     { to: '/', icon: Kanban, label: 'Board' },
     { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { to: '/settings', icon: Settings, label: 'Settings' },
   ];
 
   return (

@@ -2,7 +2,8 @@ import { Filter, X } from 'lucide-react';
 import { useState } from 'react';
 import { useFiltersStore } from '@/store/useFiltersStore';
 import { useUsersStore } from '@/store/useUsersStore';
-import { ALL_TAGS, PRIORITY_CONFIG } from '@/types';
+import { useTagsStore } from '@/store/useTagsStore';
+import { PRIORITY_CONFIG } from '@/types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { cn } from '@/utils/misc';
@@ -11,6 +12,7 @@ export function FilterBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { filters, resetFilters, toggleTag, togglePriority, toggleAssignee } = useFiltersStore();
   const { users } = useUsersStore();
+  const { tags } = useTagsStore();
 
   const activeFilterCount = 
     filters.assignees.length + 
@@ -79,18 +81,18 @@ export function FilterBar() {
                 Tags
               </h3>
               <div className="flex flex-wrap gap-2">
-                {ALL_TAGS.map((tag) => (
+                {tags.map((tag) => (
                   <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
+                    key={tag.id}
+                    onClick={() => toggleTag(tag.name)}
                     className={cn(
                       'px-3 py-1.5 text-sm rounded-lg transition-colors',
-                      filters.tags.includes(tag)
+                      filters.tags.includes(tag.name)
                         ? 'bg-primary-600 text-white'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     )}
                   >
-                    {tag}
+                    {tag.name}
                   </button>
                 ))}
               </div>

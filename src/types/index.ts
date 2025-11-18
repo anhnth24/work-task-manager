@@ -44,7 +44,7 @@ export interface Task {
   assigneeId?: string;
   status: Status;
   priority: Priority;
-  tags: Tag[];
+  tags: string[]; // Changed to string[] to support custom tags
   dueDate?: string; // ISO date string
   createdAt: string; // ISO date string
   updatedAt: string; // ISO date string
@@ -84,7 +84,7 @@ export interface Note {
  */
 export interface Filters {
   assignees: string[]; // User IDs
-  tags: Tag[];
+  tags: string[]; // Changed to string[] to support custom tags
   priorities: Priority[];
   query: string; // Search query
 }

@@ -7,12 +7,14 @@ import { Button } from '../ui/Button';
 import { useUIStore } from '@/store/useUIStore';
 import { useTasksStore } from '@/store/useTasksStore';
 import { useUsersStore } from '@/store/useUsersStore';
-import { STATUS_CONFIG, PRIORITY_CONFIG, ALL_TAGS, type Priority, type Tag, type Status } from '@/types';
+import { useTagsStore } from '@/store/useTagsStore';
+import { STATUS_CONFIG, PRIORITY_CONFIG, type Priority, type Status } from '@/types';
 
 export function TaskModal() {
   const { taskModal, closeTaskModal } = useUIStore();
   const { addTask, updateTask, getTaskById } = useTasksStore();
   const { users } = useUsersStore();
+  const { tags } = useTagsStore();
 
   const [formData, setFormData] = useState({
     title: '',
@@ -20,7 +22,7 @@ export function TaskModal() {
     assigneeId: '',
     status: 'todo' as Status,
     priority: 'medium' as Priority,
-    tags: [] as Tag[],
+    tags: [] as string[],
     dueDate: '',
   });
 
@@ -73,12 +75,12 @@ export function TaskModal() {
     closeTaskModal();
   };
 
-  const toggleTag = (tag: Tag) => {
+  const toggleTag = (tagName: string) => {
     setFormData((prev) => ({
       ...prev,
-      tags: prev.tags.includes(tag)
-        ? prev.tags.filter((t) => t !== tag)
-        : [...prev.tags, tag],
+      tags: prev.tags.includes(tagName)
+        ? prev.tags.filter((t) => t !== tagName)
+        : [...prev.tags, tagName],
     }));
   };
 
@@ -147,18 +149,18 @@ export function TaskModal() {
             Tags
           </label>
           <div className="flex flex-wrap gap-2">
-            {ALL_TAGS.map((tag) => (
+            {tags.map((tag) => (
               <button
-                key={tag}
+                key={tag.id}
                 type="button"
-                onClick={() => toggleTag(tag)}
+                onClick={() => toggleTag(tag.name)}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${
-                  formData.tags.includes(tag)
+                  formData.tags.includes(tag.name)
                     ? 'bg-primary-600 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                 }`}
               >
-                {tag}
+                {tag.name}
               </button>
             ))}
           </div>

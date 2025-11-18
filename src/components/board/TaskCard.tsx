@@ -1,12 +1,13 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Calendar, Trash2, Edit } from 'lucide-react';
-import { type Task, PRIORITY_CONFIG, TAG_COLORS } from '@/types';
+import { type Task, PRIORITY_CONFIG } from '@/types';
 import { Avatar } from '../ui/Avatar';
 import { Badge } from '../ui/Badge';
 import { useUsersStore } from '@/store/useUsersStore';
+import { useTagsStore } from '@/store/useTagsStore';
 import { useUIStore } from '@/store/useUIStore';
-import { formatDate, isOverdue } from '@/utils/date';
+import { formatDate, isOverdue, isDueSoon } from '@/utils/date';
 import { cn } from '@/utils/misc';
 
 interface TaskCardProps {
@@ -18,6 +19,7 @@ export function TaskCard({ task, isDragging = false }: TaskCardProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging: isSortableDragging } =
     useSortable({ id: task.id });
   const { getUserById } = useUsersStore();
+  const { getTagByName } = useTagsStore();
   const { openTaskModal, openDeleteConfirm } = useUIStore();
 
   const assignee = task.assigneeId ? getUserById(task.assigneeId) : null;
@@ -76,18 +78,22 @@ export function TaskCard({ task, isDragging = false }: TaskCardProps) {
       {/* Tags */}
       {task.tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-3">
-          {task.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-0.5 text-xs rounded"
-              style={{
-                backgroundColor: TAG_COLORS[tag] + '20',
-                color: TAG_COLORS[tag],
-              }}
-            >
-              {tag}
-            </span>
-          ))}
+          {task.tags.slice(0, 3).map((tagName) => {
+            const tagData = getTagByName(tagName);
+            const color = tagData?.color || '#64748b';
+            return (
+              <span
+                key={tagName}
+                className="px-2 py-0.5 text-xs rounded"
+                style={{
+                  backgroundColor: color + '20',
+                  color: color,
+                }}
+              >
+                {tagName}
+              </span>
+            );
+          })}
           {task.tags.length > 3 && (
             <span className="px-2 py-0.5 text-xs text-gray-500 dark:text-gray-400">
               +{task.tags.length - 3}
@@ -103,11 +109,14 @@ export function TaskCard({ task, isDragging = false }: TaskCardProps) {
           {task.dueDate && (
             <div
               className={cn(
-                'flex items-center gap-1 text-xs',
+                'flex items-center gap-1 text-xs font-medium',
                 isOverdue(task.dueDate)
-                  ? 'text-red-600 dark:text-red-400'
+                  ? 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded'
+                  : isDueSoon(task.dueDate)
+                  ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded'
                   : 'text-gray-600 dark:text-gray-400'
               )}
+              title={isOverdue(task.dueDate) ? 'Overdue' : isDueSoon(task.dueDate) ? 'Due soon (within 3 days)' : 'Due date'}
             >
               <Calendar className="w-3 h-3" />
               <span>{formatDate(task.dueDate, 'MMM d')}</span>
