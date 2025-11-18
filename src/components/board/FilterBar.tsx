@@ -32,7 +32,7 @@ export function FilterBar() {
           <Filter className="w-4 h-4 mr-2" />
           Filters
           {activeFilterCount > 0 && (
-            <span className="ml-2 px-2 py-0.5 text-xs bg-primary-600 text-white rounded-full">
+            <span className="ml-2 px-2 py-0.5 text-xs bg-blue-600 text-white rounded-full">
               {activeFilterCount}
             </span>
           )}
@@ -88,8 +88,8 @@ export function FilterBar() {
                     className={cn(
                       'px-3 py-1.5 text-sm rounded-lg transition-colors',
                       filters.tags.includes(tag.name)
-                        ? 'bg-primary-600 text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-700'
                     )}
                   >
                     {tag.name}
@@ -111,15 +111,15 @@ export function FilterBar() {
                     className={cn(
                       'w-full flex items-center justify-between px-4 py-2 rounded-lg transition-colors',
                       filters.priorities.includes(priority.id)
-                        ? 'bg-primary-100 dark:bg-primary-900/30 border-2 border-primary-600'
-                        : 'bg-gray-50 dark:bg-gray-700 border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600'
+                        ? 'bg-blue-100 dark:bg-blue-900/30 border-2 border-blue-600'
+                        : 'bg-gray-300 dark:bg-gray-600 border-2 border-transparent hover:border-gray-400 dark:hover:border-gray-700'
                     )}
                   >
                     <span className={cn('text-sm font-medium', priority.color)}>
                       {priority.label}
                     </span>
                     {filters.priorities.includes(priority.id) && (
-                      <span className="text-primary-600">✓</span>
+                      <span className="text-blue-600">✓</span>
                     )}
                   </button>
                 ))}

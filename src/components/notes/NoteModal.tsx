@@ -111,7 +111,7 @@ export function NoteModal({ isOpen, onClose, onSave, note, mode }: NoteModalProp
           <button
             onClick={handleSave}
             disabled={!content.trim()}
-            className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium min-w-0"
+            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium min-w-0"
           >
             {mode === 'create' ? 'Create Note' : 'Save Changes'}
           </button>

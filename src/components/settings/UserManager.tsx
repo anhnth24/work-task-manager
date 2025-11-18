@@ -139,11 +139,11 @@ export function UserManager() {
                       key={emoji}
                       type="button"
                       onClick={() => setNewUserAvatar(emoji)}
-                      className={cn(
+                className={cn(
                         'text-2xl p-2 rounded-lg transition-all hover:scale-110',
                         newUserAvatar === emoji
-                          ? 'bg-primary-100 dark:bg-primary-900 ring-2 ring-primary-600'
-                          : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                          ? 'bg-blue-200 dark:bg-blue-900 ring-2 ring-blue-600'
+                          : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                       )}
                     >
                       {emoji}
@@ -161,7 +161,7 @@ export function UserManager() {
               <button
                 onClick={handleAddUser}
                 disabled={!newUserName.trim()}
-                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
               >
                 Create User
               </button>
@@ -240,8 +240,8 @@ export function UserManager() {
                               className={cn(
                                 'text-xl p-1 rounded transition-all hover:scale-110',
                                 editAvatar === emoji
-                                  ? 'bg-primary-100 dark:bg-primary-900 ring-2 ring-primary-600'
-                                  : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                                  ? 'bg-blue-200 dark:bg-blue-900 ring-2 ring-blue-600'
+                                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                               )}
                             >
                               {emoji}

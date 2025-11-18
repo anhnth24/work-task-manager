@@ -156,8 +156,8 @@ export function TaskModal() {
                 onClick={() => toggleTag(tag.name)}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${
                   formData.tags.includes(tag.name)
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-300'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-400 dark:bg-gray-600 text-gray-900 dark:text-gray-100'
                 }`}
               >
                 {tag.name}
