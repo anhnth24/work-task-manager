@@ -107,17 +107,17 @@ export function NoteModal({ isOpen, onClose, onSave, note, mode }: NoteModalProp
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 pt-4">
+        <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
           <button
             onClick={handleSave}
             disabled={!content.trim()}
-            className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-medium"
+            className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium min-w-0"
           >
             {mode === 'create' ? 'Create Note' : 'Save Changes'}
           </button>
           <button
             onClick={handleClose}
-            className="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors font-medium"
+            className="flex-1 px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors font-medium min-w-0"
           >
             Cancel
           </button>
