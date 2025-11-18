@@ -24,7 +24,7 @@ export function Column({ status, label, tasks }: ColumnProps) {
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
             {label}
           </h2>
-          <span className="px-2 py-0.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+          <span className="px-2 py-0.5 text-sm font-medium bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-300 rounded-full">
             {tasks.length}
           </span>
         </div>

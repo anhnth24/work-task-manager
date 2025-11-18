@@ -136,7 +136,7 @@ export function TagManager() {
                   setNewTagName('');
                   setNewTagColor('#3b82f6');
                 }}
-                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                className="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
               >
                 Cancel
               </button>
@@ -206,7 +206,7 @@ export function TagManager() {
                       </button>
                       <button
                         onClick={handleCancelEdit}
-                        className="flex items-center gap-1 px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                        className="flex items-center gap-1 px-3 py-1 text-sm bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
                       >
                         <X className="w-3 h-3" />
                         Cancel

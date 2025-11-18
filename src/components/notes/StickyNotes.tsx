@@ -61,7 +61,7 @@ export function StickyNotes() {
           <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
             📝 Notes
             {notes.length > 0 && (
-              <span className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full">
+              <span className="text-xs bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-300 px-2 py-0.5 rounded-full">
                 {notes.length}
               </span>
             )}
